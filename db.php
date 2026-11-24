@@ -1,0 +1,24 @@
+<?php
+// Local XAMPP settings. Hostingке көшіргенде провайдер берген DB мәндерін енгізіңіз.
+$host = '127.0.0.1';
+$port = '3307'; // XAMPP локалды MySQL порты
+$dbname = 'qarjy_db';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO(
+        "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4",
+        $username,
+        $password,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]
+    );
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    exit('Дерекқорға қосылу мүмкін болмады. DB баптауларын тексеріңіз.');
+}

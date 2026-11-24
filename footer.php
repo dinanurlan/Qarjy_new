@@ -1,0 +1,1 @@
+</div><footer>© <?=date('Y')?> Qarjy — жеке қаржыңызды ақылды басқарыңыз.</footer></body></html>
